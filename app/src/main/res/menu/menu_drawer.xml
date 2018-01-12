@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group_0">
+        <item
+            android:id="@+id/nav_record"
+            android:icon="@drawable/ic_equalizer_black_24dp"
+
+            android:title="記録"/>
+        <item
+            android:id="@+id/nav_lend"
+            android:icon="@drawable/ic_local_library_black_24dp"
+            android:title="貸出"/>
+        <item
+            android:id="@+id/nav_borrow"
+            android:icon="@drawable/ic_import_contacts_black_24dp"
+            android:title="返却"/>
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group_1">
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="設定"/>
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_email_black_24dp"
+            android:title="ご意見・お問い合わせ"/>
+    </group>
+
+</menu>

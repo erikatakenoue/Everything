@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Everything</string>
+    <string-array name="list">
+        <item>文庫</item>
+        <item>新書</item>
+        <item>コミック</item>
+        <item>単行本</item>
+        <item>ペーパーバック</item>
+        <item>ムック</item>
+        <item>コミック</item>
+        <item>絵本</item>
+        <item>図鑑</item>
+        <item>大型本</item>
+        <item>全集・双書</item>
+        <item>事・辞典</item>
+        <item>その他</item>
+    </string-array>
+    <string-array name="list2">
+        <item>読了本</item>
+        <item>読書中</item>
+        <item>積読本</item>
+        <item>気になる</item>
+    </string-array>
+</resources>
