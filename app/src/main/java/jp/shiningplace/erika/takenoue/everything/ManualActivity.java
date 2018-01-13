@@ -10,6 +10,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
+
 public class ManualActivity extends AppCompatActivity {
 
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -19,6 +21,8 @@ public class ManualActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
+
+        TypefaceProvider.registerDefaultIconSets();
 
         mDateEdit = (EditText) findViewById(R.id.daysText);
         mDateEdit.setOnClickListener(new View.OnClickListener() {

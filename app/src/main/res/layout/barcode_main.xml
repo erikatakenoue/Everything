@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="jp.shiningplace.erika.takenoue.everything.BarcodeActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:id="@+id/barcodeReaderLayout">
+
+        <TextView
+            android:text="バーコード"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
+
+        <com.journeyapps.barcodescanner.CompoundBarcodeView
+            android:id="@+id/barcodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

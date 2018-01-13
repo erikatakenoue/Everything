@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -191,6 +192,17 @@
         android:gravity="top"
         android:inputType="textMultiLine"
         android:maxLines="10" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:bootstrapSize="lg"
+        android:layout_below="@+id/memoText"
+        android:layout_marginTop="30dp"
+        android:text="登録"
+        app:roundedCorners="true"
+        app:bootstrapBrand="info" />
 
 </RelativeLayout>
 </ScrollView>

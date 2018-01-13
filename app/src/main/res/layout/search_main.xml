@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="jp.shiningplace.erika.takenoue.everything.SearchActivity">
+
+    <TextView
+        android:id="@+id/titleSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:text="タイトル" />
+
+    <EditText
+        android:id="@+id/titleSearchText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/titleSearch"
+        android:gravity="top"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/authorSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/titleSearchText"
+        android:layout_marginTop="50dp"
+        android:text="著者" />
+
+    <EditText
+        android:id="@+id/authorSearchText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/authorSearch"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:bootstrapSize="lg"
+        android:layout_below="@+id/authorSearchText"
+        android:layout_marginTop="50dp"
+        android:text="検索"
+        app:roundedCorners="true"
+        app:bootstrapBrand="info" />
+
+</RelativeLayout>
+

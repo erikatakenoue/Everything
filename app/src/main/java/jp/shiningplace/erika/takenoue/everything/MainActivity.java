@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         materialDesignFAM = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionButton1 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
         floatingActionButton2 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
+        floatingActionButton3 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
 
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -52,8 +53,15 @@ public class MainActivity extends AppCompatActivity {
         });
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO something when floating action menu second item clicked
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -61,10 +69,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.inflateMenu(R.menu.menu_main);
         setViews();
     }
-    @OnClick(R.id.material_design_floating_action_menu_item3)
-    public void onBarcodeScanClick() {
-        new IntentIntegrator(this).initiateScan();
-    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

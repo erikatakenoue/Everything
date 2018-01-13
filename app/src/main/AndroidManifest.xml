@@ -13,6 +13,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,6 +25,25 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
         </activity>
+        <activity android:name=".BarcodeActivity"
+            android:label="バーコードから登録"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
+        </activity>
+        <activity android:name=".SearchActivity"
+            android:label="検索から登録"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
 </manifest>
