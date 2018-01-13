@@ -13,9 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -27,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         materialDesignFAM = (FloatingActionMenu) findViewById(R.id.material_design_android_floating_action_menu);
         floatingActionButton1 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item1);
         floatingActionButton2 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item2);
-        floatingActionButton3 = (FloatingActionButton) findViewById(R.id.material_design_floating_action_menu_item3);
 
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -45,17 +56,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO something when floating action menu third item clicked
-
-            }
-        });
 
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.inflateMenu(R.menu.menu_main);
         setViews();
     }
+    @OnClick(R.id.material_design_floating_action_menu_item3)
+    public void onBarcodeScanClick() {
+        new IntentIntegrator(this).initiateScan();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (intentResult != null) {
+            String content = intentResult.getContents();
+            Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     private void setViews() {
         setSupportActionBar(toolbar);
@@ -66,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         setDrawer();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.main_tab);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setDrawer() {
