@@ -7,16 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.RelativeLayout;
 
 public class ExampleFragment extends Fragment {
     private final static String BACKGROUND_COLOR = "background_color";
-    private ListView mAllList;
-    private AllbookAdapter mAllbookAdapter;
-
 
     public static ExampleFragment newInstance(@ColorRes int IdRes) {
         ExampleFragment frag = new ExampleFragment();

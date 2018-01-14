@@ -13,7 +13,7 @@ public class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return ExampleFragment.newInstance(android.R.color.transparent);
+                return BookFragment.newInstance(android.R.color.transparent);
             case 1:
                 return ExampleFragment.newInstance(android.R.color.transparent);
             case 2:
