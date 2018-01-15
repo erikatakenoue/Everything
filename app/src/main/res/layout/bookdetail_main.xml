@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ImageView
+        android:id="@+id/imageDetail"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/titleDetail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageDetail"
+        android:text="Title" />
+
+    <TextView
+        android:id="@+id/authorDetail"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/imageDetail"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/imageDetail"
+        android:text="New Text" />
+
+    <TextView
+        android:id="@+id/publisherDetailText"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageDetail"
+        android:layout_marginTop="20dp"
+        android:text="出版社" />
+
+    <TextView
+        android:id="@+id/publisherDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/imageDetail"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/publisherDetailText"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/detaDetailText"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/publisherDetailText"
+        android:layout_marginTop="10dp"
+        android:text="発売日" />
+
+    <TextView
+        android:id="@+id/detaDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/publisherDetailView"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/detaDetailText"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/sizeDetailText"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/detaDetailView"
+        android:layout_marginTop="10dp"
+        android:text="分類" />
+
+    <TextView
+        android:id="@+id/sizeDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/detaDetailText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/sizeDetailText"
+        android:text="TextView"/>
+
+    <TextView
+        android:id="@+id/contentDetailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sizeDetailText"
+        android:layout_marginTop="10dp"
+        android:text="概要" />
+
+    <TextView
+        android:id="@+id/contentDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/contentDetailText" />
+
+
+</RelativeLayout>

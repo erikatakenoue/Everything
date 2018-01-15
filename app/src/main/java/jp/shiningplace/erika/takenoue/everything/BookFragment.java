@@ -1,8 +1,12 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.v4.app.Fragment;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -21,6 +27,8 @@ public class BookFragment extends Fragment {
     private final static String BACKGROUND_COLOR = "background_color";
     private ListView mAllList;
     private AllbookAdapter mAllbookAdapter;
+    public final static String EXTRA_TASK = " jp.shiningplace.erika.takenoue.everything.TASK";
+
     private Realm mRealm;
     private RealmChangeListener mRealmListener = new RealmChangeListener() {
         @Override
@@ -57,34 +65,67 @@ public class BookFragment extends Fragment {
         mAllbookAdapter = new AllbookAdapter(getActivity());
 
         // ListViewをタップしたときの処理
+        // 編集画面に移行
         mAllList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // 入力・編集する画面に遷移させる
+                Book book = (Book) parent.getAdapter().getItem(position);
+
+                Intent intent = new Intent(getActivity(), ManualActivity.class);
+                intent.putExtra(EXTRA_TASK, book.getId());
+
+                startActivity(intent);
             }
         });
 
         // ListViewを長押ししたときの処理
+        // 削除処理
         mAllList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final Book book = (Book) parent.getAdapter().getItem(position);
 
-                // タスクを削除する
+                // ダイアログを表示する
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder.setTitle("削除");
+                builder.setMessage(book.getTitle() + "を削除しますか");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        RealmResults<Book> results = mRealm.where(Book.class).equalTo("id", book.getId()).findAll();
+
+                        mRealm.beginTransaction();
+                        results.deleteAllFromRealm();
+                        mRealm.commitTransaction();
+
+                        reloadListView();
+                    }
+                });
+                builder.setNegativeButton("CANCEL", null);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
                 return true;
             }
         });
-        addTaskForTest();
 
         reloadListView();
         return view;
     }
 
     private void reloadListView() {
-        RealmResults<Book> bookRealmResults = mRealm.where(Book.class).findAllSorted("date", Sort.DESCENDING);
-        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(bookRealmResults));
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).findAllSorted("date", Sort.DESCENDING);
+        // 上記の結果を、TaskList としてセットする
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        // TaskのListView用のアダプタに渡す
         mAllList.setAdapter(mAllbookAdapter);
+        // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mAllbookAdapter.notifyDataSetChanged();
+
+
     }
 
     @Override
@@ -93,18 +134,8 @@ public class BookFragment extends Fragment {
 
         mRealm.close();
     }
-
-    private void addTaskForTest() {
-        Book book = new Book();
-        book.setTitle("作業");
-        book.setContents("プログラムを書いてPUSHする");
-        book.setDate(new Date());
-        book.setId(0);
-        mRealm.beginTransaction();
-        mRealm.copyToRealmOrUpdate(book);
-        mRealm.commitTransaction();
-    }
-
 }
+
+
 
 
