@@ -9,6 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:id="@+id/detailLayout"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ImageView
@@ -22,8 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageDetail"
-        android:text="Title" />
+        android:layout_toRightOf="@+id/imageDetail" />
 
     <TextView
         android:id="@+id/authorDetail"
@@ -32,8 +32,7 @@
         android:layout_alignBottom="@+id/imageDetail"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/imageDetail"
-        android:text="New Text" />
+        android:layout_toEndOf="@+id/imageDetail" />
 
     <TextView
         android:id="@+id/publisherDetailText"
@@ -50,8 +49,7 @@
         android:layout_height="20dp"
         android:layout_below="@+id/imageDetail"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/publisherDetailText"
-        android:text="TextView" />
+        android:layout_toRightOf="@+id/publisherDetailText" />
 
     <TextView
         android:id="@+id/detaDetailText"
@@ -68,8 +66,7 @@
         android:layout_height="20dp"
         android:layout_below="@+id/publisherDetailView"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/detaDetailText"
-        android:text="TextView" />
+        android:layout_toRightOf="@+id/detaDetailText"/>
 
     <TextView
         android:id="@+id/sizeDetailText"

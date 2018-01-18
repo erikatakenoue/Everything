@@ -1,7 +1,5 @@
 package jp.shiningplace.erika.takenoue.everything;
 
-import android.content.ClipData;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,11 +7,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class AllbookAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater = null;
