@@ -24,6 +24,7 @@ public class SearchListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_search);
         TypefaceProvider.registerDefaultIconSets();
 
         try {
@@ -35,9 +36,9 @@ public class SearchListActivity extends AppCompatActivity {
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                     RakutenBooks rakuten = retrofit.create(RakutenBooks.class);
-                    String title=getIntent().getStringExtra("title");
-                    String author=getIntent().getStringExtra("author");
-                    Call<BookItems> call = rakuten.Search(title, author);
+                    String title = getIntent().getStringExtra("title");
+                    String author = getIntent().getStringExtra("author");
+                    Call<BookItems> call = rakuten.Search(title, author, "1061804608980707594",2);
                     BookItems bookitems = null;
                     try {
                         bookitems = call.execute().body();
@@ -50,21 +51,12 @@ public class SearchListActivity extends AppCompatActivity {
                         Log.d(TAG, "book :" + e.getMessage());
                         e.printStackTrace();
                     }
-
                     final BookItems temp_book = bookitems;
                     handler.post(new Runnable() {
                                      @Override
                                      public void run() {
                                          if (temp_book != null) {
-                                             BookItem item = new BookItem();
-                                             List<BookItem> objects = new ArrayList<BookItem>();
-                                             objects.add(item);
-                                             for (int i = 1; i < temp_book.items.size(); i += 1) {
-                                                 item.setTitle(String.valueOf(temp_book.items.get(i).title));
-                                                 item.setAuthor(String.valueOf(temp_book.items.get(i).author));
-                                             }
-
-                                             BookAdapter bookAdapater = new BookAdapter(getApplicationContext(), 0, objects);
+                                             BookAdapter bookAdapater = new BookAdapter(getApplicationContext(), 0, temp_book.Items);
                                              mListView = (ListView) findViewById(R.id.listView2);
                                              mListView.setAdapter(bookAdapater);
                                          }

@@ -7,5 +7,5 @@ import retrofit2.http.Query;
 
 public interface RakutenBooks {
     @GET("20170404")
-    Call<BookItems> Search(@Query("title") String title, @Query("author") String author);
+    Call<BookItems> Search(@Query("title") String title, @Query("author") String author, @Query("applicationId") String applicationId,@Query("formatVersion")int formatVersion);
 }
