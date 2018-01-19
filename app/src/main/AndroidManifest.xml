@@ -45,6 +45,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
         </activity>
+        <activity android:name=".SearchListActivity"
+            android:label="検索結果"
+            android:parentActivityName=".SearchActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.CAMERA"/>

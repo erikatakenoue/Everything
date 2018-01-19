@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="jp.shiningplace.erika.takenoue.everything.SearchActivity">
+    tools:context="jp.shiningplace.erika.takenoue.everything.SearchListActivity">
 
     <TextView
         android:id="@+id/titleSearch"
