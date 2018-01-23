@@ -1,8 +1,8 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.google.zxing.ResultPoint;
 import com.journeyapps.barcodescanner.BarcodeCallback;
@@ -22,9 +22,10 @@ public class BarcodeActivity extends AppCompatActivity {
         mBarcodeView.decodeSingle(new BarcodeCallback() {
             @Override
             public void barcodeResult(BarcodeResult barcodeResult) {
-
-                TextView textView = (TextView)findViewById(R.id.textView);
-                textView.setText(barcodeResult.getText());
+                String isbn = barcodeResult.getText().toString();
+                Intent intent = new Intent(BarcodeActivity.this, SearchListActivity.class);
+                intent.putExtra("isbn", isbn);
+                startActivity(intent);
             }
 
             @Override

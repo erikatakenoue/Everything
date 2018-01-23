@@ -52,7 +52,7 @@
         android:layout_toRightOf="@+id/publisherDetailText" />
 
     <TextView
-        android:id="@+id/detaDetailText"
+        android:id="@+id/dateDetailText"
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
@@ -61,19 +61,19 @@
         android:text="発売日" />
 
     <TextView
-        android:id="@+id/detaDetailView"
+        android:id="@+id/dateDetailView"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_below="@+id/publisherDetailView"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/detaDetailText"/>
+        android:layout_toRightOf="@+id/dateDetailText"/>
 
     <TextView
         android:id="@+id/sizeDetailText"
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/detaDetailView"
+        android:layout_below="@+id/dateDetailView"
         android:layout_marginTop="10dp"
         android:text="分類" />
 
@@ -81,13 +81,12 @@
         android:id="@+id/sizeDetailView"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/detaDetailText"
+        android:layout_below="@+id/dateDetailText"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/sizeDetailText"
-        android:text="TextView"/>
+        android:layout_toRightOf="@+id/sizeDetailText" />
 
     <TextView
-        android:id="@+id/contentDetailText"
+        android:id="@+id/itemCaptionDetailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -96,11 +95,11 @@
         android:text="概要" />
 
     <TextView
-        android:id="@+id/contentDetailView"
+        android:id="@+id/itemCaptionDetailView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/contentDetailText" />
-
+        android:layout_height="120dp"
+        android:layout_alignBaseline="@+id/itemCaptionDetailText"
+        android:layout_alignBottom="@+id/itemCaptionDetailText"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

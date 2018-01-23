@@ -1,9 +1,13 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
@@ -20,12 +24,14 @@ public class SearchListActivity extends AppCompatActivity {
     private ListView mListView;
     public static final String API_URL = "https://app.rakuten.co.jp/services/api/BooksBook/Search/";
     public static final String TAG = "SearchListActivity";
+    List<BookItem> booklist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_search);
         TypefaceProvider.registerDefaultIconSets();
+        mListView = (ListView) findViewById(R.id.listView2);
 
         try {
             Thread thread = new Thread(new Runnable() {
@@ -38,7 +44,8 @@ public class SearchListActivity extends AppCompatActivity {
                     RakutenBooks rakuten = retrofit.create(RakutenBooks.class);
                     String title = getIntent().getStringExtra("title");
                     String author = getIntent().getStringExtra("author");
-                    Call<BookItems> call = rakuten.Search(title, author, "1061804608980707594",2);
+                    String isbn = getIntent().getStringExtra("isbn");
+                    Call<BookItems> call = rakuten.Search(title, author, "1061804608980707594",2, isbn);
                     BookItems bookitems = null;
                     try {
                         bookitems = call.execute().body();
@@ -52,12 +59,12 @@ public class SearchListActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     final BookItems temp_book = bookitems;
+                    booklist=bookitems.Items;
                     handler.post(new Runnable() {
                                      @Override
                                      public void run() {
                                          if (temp_book != null) {
                                              BookAdapter bookAdapater = new BookAdapter(getApplicationContext(), 0, temp_book.Items);
-                                             mListView = (ListView) findViewById(R.id.listView2);
                                              mListView.setAdapter(bookAdapater);
                                          }
                                      }
@@ -70,5 +77,22 @@ public class SearchListActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SearchListActivity.this, DetailActivity.class);
+                intent.putExtra("item", booklist.get(position));
+                startActivity(intent);
+            }
+        });
+
+        // ListViewを長押ししたときの処理
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return true;
+            }
+        });
     }
 }

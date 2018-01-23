@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class BookAdapter extends ArrayAdapter<BookItem> {
         if (null == convertView) {
             convertView = layoutInflater_.inflate(R.layout.search_list, null);
         }
+
         TextView textView;
         textView = (TextView)convertView.findViewById(R.id.titleTextView2);
         textView.setText(item.getTitle());
@@ -31,6 +35,9 @@ public class BookAdapter extends ArrayAdapter<BookItem> {
         TextView textView2;
         textView2 = (TextView)convertView.findViewById(R.id.authorTextView2);
         textView2.setText(item.getAuthor());
+
+        ImageView imageDetail = (ImageView)convertView.findViewById(R.id.imageView3);
+        Picasso.with(getContext()).load(item.getLargeImageUrl()).into(imageDetail);
 
         return convertView;
     }

@@ -46,10 +46,16 @@
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
         </activity>
         <activity android:name=".SearchListActivity"
-            android:label="検索結果"
             android:parentActivityName=".SearchActivity"
+            android:label="検索結果"
             android:theme="@style/AppTheme">
         </activity>
+        <activity android:name=".DetailActivity"
+            android:label="詳細画面"
+            android:parentActivityName=".SearchListActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+
 
     </application>
 
