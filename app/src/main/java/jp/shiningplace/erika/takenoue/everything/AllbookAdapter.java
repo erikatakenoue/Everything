@@ -5,15 +5,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AllbookAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater = null;
     private List<Book> mAllList;
+    private Context mContext;
 
     public AllbookAdapter(Context context) {
+        mContext =context;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -46,6 +51,9 @@ public class AllbookAdapter extends BaseAdapter {
 
         TextView textView1 = (TextView) convertView.findViewById(R.id.titleTextView);
         TextView textView2 = (TextView) convertView.findViewById(R.id.authorTextView);
+        ImageView imageview = (ImageView)convertView.findViewById(R.id.imageView2);
+
+        Picasso.with(mContext).load(mAllList.get(position).getLargeImageUrl()).into(imageview);
 
         textView1.setText(mAllList.get(position).getTitle());
         textView2.setText(mAllList.get(position).getAuthor());

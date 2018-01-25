@@ -15,13 +15,13 @@ public class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return BookFragment.newInstance(android.R.color.transparent);
             case 1:
-                return ExampleFragment.newInstance(android.R.color.transparent);
+                return CompletionFragment.newInstance(android.R.color.transparent);
             case 2:
-                return ExampleFragment.newInstance(android.R.color.transparent);
+                return HalfwayFragment.newInstance(android.R.color.transparent);
             case 3:
-                return ExampleFragment.newInstance(android.R.color.transparent);
+                return StillFragment.newInstance(android.R.color.transparent);
             case 4:
-                return ExampleFragment.newInstance(android.R.color.transparent);
+                return ConcernFragment.newInstance(android.R.color.transparent);
         }
         return null;
     }

@@ -7,12 +7,18 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -20,6 +26,7 @@ import com.github.clans.fab.FloatingActionMenu;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import android.graphics.Typeface;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -56,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView text = (TextView)findViewById(R.id.toolbar_title);
+        text.setTypeface(Typeface.createFromAsset(getAssets(),
+                "KochAntiquaZierbuchstaben.ttf"));
+
 
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.inflateMenu(R.menu.menu_main);
@@ -113,5 +125,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 }
 

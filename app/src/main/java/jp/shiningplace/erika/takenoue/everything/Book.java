@@ -9,16 +9,13 @@ import io.realm.annotations.PrimaryKey;
 public class Book extends RealmObject implements Serializable {
     private String title;
     private String author;
-    private String publisher;
-    private String size;
+    private String publisherName;
     private Date date;
-    private String contents;
-    private String image;
-    private String situation;
-    private String enddate;
-    private String memo;
+    private String size;
+    private String itemCaption;
+    private String largeImageUrl;
+    int shelf;
 
-    // id をプライマリーキーとして設定
     @PrimaryKey
     private int id;
 
@@ -38,20 +35,12 @@ public class Book extends RealmObject implements Serializable {
         this.author = author;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getPublisherName() {
+        return publisherName;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 
     public Date getDate() {
@@ -62,44 +51,29 @@ public class Book extends RealmObject implements Serializable {
         this.date = date;
     }
 
-    public String getContents() {
-        return contents;
+
+    public String getSize() {
+        return size;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public String getImage() {
-        return image;
+    public String getItemCaption() {
+        return itemCaption;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setItemCaption(String itemCaption) {
+        this.itemCaption = itemCaption;
     }
 
-    public String getSituation() {
-        return situation;
+    public String getLargeImageUrl() {
+        return largeImageUrl;
     }
 
-    public void setSituation(String situation) {
-        this.situation = situation;
-    }
-
-    public String getEnddate() {
-        return enddate;
-    }
-
-    public void setEnddate(String enddate) {
-        this.enddate = enddate;
-    }
-
-    public String getMemo() {
-        return memo;
-    }
-
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public void setLargeImageUrl(String largeImageUrl) {
+        this.largeImageUrl = largeImageUrl;
     }
 
     public int getId() {
@@ -108,5 +82,13 @@ public class Book extends RealmObject implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getShelf() {
+        return shelf;
+    }
+
+    public void setShelf(int shelf) {
+        this.shelf = shelf;
     }
 }

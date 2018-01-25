@@ -23,18 +23,28 @@
                 android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/grad"
                 android:theme="@style/AppTheme"
-                app:layout_scrollFlags="enterAlways|scroll" />
+                app:layout_scrollFlags="enterAlways|scroll" >
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Everything"
+                android:gravity="center_vertical"
+                android:paddingStart="48dp"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+            </android.support.v7.widget.Toolbar>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/main_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/colorPrimary"
-                android:theme="@style/AppTheme"
-                app:tabIndicatorColor="#7f7073">
+                android:background="@color/white"
+                android:theme="@style/AppTheme2"
+                app:tabIndicatorColor="@color/grad2">
 
             </android.support.design.widget.TabLayout>
 
@@ -55,12 +65,12 @@
             fab:menu_animationDelayPerItem="55"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_buttonSpacing="0dp"
-            fab:menu_colorNormal="@color/colorAccent"
-            fab:menu_colorPressed="@color/colorAccent"
+            fab:menu_colorNormal="@color/grad1"
+            fab:menu_colorPressed="@color/grad1"
             fab:menu_colorRipple="#99d4d4d4"
             fab:menu_fab_size="normal"
-            fab:menu_labels_colorNormal="#333"
-            fab:menu_labels_colorPressed="#444"
+            fab:menu_labels_colorNormal="@android:color/transparent"
+            fab:menu_labels_colorPressed="@android:color/transparent"
             fab:menu_labels_colorRipple="#66efecec"
             fab:menu_labels_cornerRadius="3dp"
             fab:menu_labels_ellipsize="none"
@@ -70,12 +80,12 @@
             fab:menu_labels_padding="8dp"
             fab:menu_labels_position="left"
             fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-            fab:menu_labels_showShadow="true"
+            fab:menu_labels_showShadow="false"
             fab:menu_labels_singleLine="false"
-            fab:menu_labels_textColor="#f2f1f1"
+            fab:menu_labels_textColor="#808080"
             fab:menu_labels_textSize="15sp"
             fab:menu_openDirection="up"
-            fab:menu_shadowColor="#d8f2da"
+            fab:menu_shadowColor="#bcd2f7"
             fab:menu_shadowRadius="4dp"
             fab:menu_shadowXOffset="1dp"
             fab:menu_shadowYOffset="4dp"
@@ -86,8 +96,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_mode_edit_white_24dp"
-                fab:fab_colorNormal="@color/colorPrimaryDark"
-                fab:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_colorNormal="@color/grad2"
+                fab:fab_colorPressed="@color/grad2"
                 fab:fab_label="手動登録"
                 fab:fab_size="mini" />
 
@@ -96,8 +106,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_search_white_24dp"
-                fab:fab_colorNormal="@color/colorPrimaryDark"
-                fab:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_colorNormal="@color/grad2"
+                fab:fab_colorPressed="@color/grad2"
                 fab:fab_label="検索から登録"
                 fab:fab_size="mini" />
 
@@ -106,8 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_camera_enhance_white_24dp"
-                fab:fab_colorNormal="@color/colorPrimaryDark"
-                fab:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_colorNormal="@color/grad2"
+                fab:fab_colorPressed="@color/grad2"
                 fab:fab_label="バーコードスキャン"
                 fab:fab_size="mini" />
         </com.github.clans.fab.FloatingActionMenu>

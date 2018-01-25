@@ -18,7 +18,7 @@ import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
-public class BookFragment extends Fragment {
+public class StillFragment extends Fragment {
     private final static String BACKGROUND_COLOR = "background_color";
     private ListView mAllList;
     private AllbookAdapter mAllbookAdapter;
@@ -32,8 +32,8 @@ public class BookFragment extends Fragment {
         }
     };
 
-    public static BookFragment newInstance(@ColorRes int IdRes) {
-        BookFragment frag = new BookFragment();
+    public static StillFragment newInstance(@ColorRes int IdRes) {
+        StillFragment frag = new StillFragment();
         Bundle b = new Bundle();
         b.putInt(BACKGROUND_COLOR, IdRes);
         frag.setArguments(b);
@@ -107,7 +107,7 @@ public class BookFragment extends Fragment {
     }
 
     private void reloadListView() {
-        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).findAllSorted("date", Sort.DESCENDING);
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("date", Sort.DESCENDING);
         // 上記の結果を、TaskList としてセットする
         mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
         // TaskのListView用のアダプタに渡す
@@ -125,9 +125,3 @@ public class BookFragment extends Fragment {
         mRealm.close();
     }
 }
-
-
-
-
-
-

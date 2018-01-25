@@ -208,7 +208,7 @@ public class ManualActivity extends AppCompatActivity {
         } else {
             mTitleEdit.setText(mBook.getTitle());
             mAuthorEdit.setText(mBook.getAuthor());
-            mContentEdit.setText(mBook.getContents());
+            mContentEdit.setText(mBook.getItemCaption());
 
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(mBook.getDate());
@@ -251,7 +251,7 @@ public class ManualActivity extends AppCompatActivity {
         String author = mAuthorEdit.getText().toString();
 
         mBook.setTitle(title);
-        mBook.setContents(content);
+        mBook.setItemCaption(content);
         mBook.setAuthor(author);
         GregorianCalendar calendar2 = new GregorianCalendar(mEndYear, mEndMonth, mEndDay);
         Date date2 = calendar2.getTime();

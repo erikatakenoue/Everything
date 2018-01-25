@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/colorAccent</item>
         <item name="drawerArrowStyle">@style/CustomDrawerArrowStyle</item>
 
@@ -13,6 +13,11 @@
     </style>
 
     <style name="CustomDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="color">#281125</item>
+        <item name="color">@color/white</item>
+    </style>
+
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="android:textColorPrimary">@color/grad2</item>
+    <item name="android:textColorSecondary">@color/grad1</item>
     </style>
 </resources>

@@ -9,12 +9,15 @@
         android:layout_width="60dp"
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/titleTextView2"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:layout_alignParentTop="true"
         android:textColor="@color/colorAccent"
         android:layout_toRightOf="@+id/imageView3"/>
@@ -23,9 +26,9 @@
         android:id="@+id/authorTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignBottom="@+id/imageView3"
         android:textColor="@color/colorAccent"
+        android:paddingBottom="10dp"
         android:layout_below="@+id/titleTextView2"
         android:layout_toEndOf="@+id/imageView3" />
 
