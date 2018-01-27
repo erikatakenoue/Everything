@@ -11,9 +11,11 @@ public class Book extends RealmObject implements Serializable {
     private String author;
     private String publisherName;
     private Date date;
+    private String salesDate;
     private String size;
     private String itemCaption;
     private String largeImageUrl;
+    private String memo;
     int shelf;
 
     @PrimaryKey
@@ -51,6 +53,13 @@ public class Book extends RealmObject implements Serializable {
         this.date = date;
     }
 
+    public String getSalesDate() {
+        return salesDate;
+    }
+
+    public void setSalesDate(String salesDate) {
+        this.salesDate = salesDate;
+    }
 
     public String getSize() {
         return size;
@@ -91,4 +100,13 @@ public class Book extends RealmObject implements Serializable {
     public void setShelf(int shelf) {
         this.shelf = shelf;
     }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
 }

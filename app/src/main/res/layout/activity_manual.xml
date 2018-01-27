@@ -126,48 +126,11 @@
         android:maxLines="10" />
 
     <TextView
-        android:id="@+id/imageTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/contentText"
-        android:text="画像" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/imageTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:background="#d3d3d3" />
-
-    <TextView
-        android:id="@+id/situationView"
-        android:layout_width="133dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="12dp"
-        android:text="読書状況" />
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/situationView"
-        android:layout_marginTop="12dp"
-        android:entries="@array/list2"
-        android:spinnerMode="dialog" />
-
-    <TextView
         android:id="@+id/enddateView"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/contentText"
         android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/situationView"
         android:text="読了日" />
 
     <EditText
@@ -175,7 +138,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/enddateView"
-        android:layout_toRightOf="@+id/spinner2"
         android:clickable="true"
         android:focusable="false"
         android:gravity="top"
@@ -187,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner2"
+        android:layout_below="@+id/enddateText"
         android:layout_marginTop="12dp"
         android:text="メモ" />
 

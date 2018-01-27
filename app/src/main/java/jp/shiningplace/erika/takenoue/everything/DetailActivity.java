@@ -1,16 +1,12 @@
 package jp.shiningplace.erika.takenoue.everything;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -128,6 +124,8 @@ public class DetailActivity extends AppCompatActivity {
         mBook.setPublisherName(bookitem.publisherName);
         mBook.setItemCaption(bookitem.itemCaption);
         mBook.setLargeImageUrl(bookitem.largeImageUrl);
+        mBook.setSize(bookitem.size);
+        mBook.setSalesDate(bookitem.salesDate);
         realm.copyToRealmOrUpdate(mBook);
         realm.commitTransaction();
 

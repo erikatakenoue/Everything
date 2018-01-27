@@ -1,7 +1,11 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.zxing.ResultPoint;
@@ -45,4 +49,3 @@ public class BarcodeActivity extends AppCompatActivity {
         mBarcodeView.pause();
     }
 }
-

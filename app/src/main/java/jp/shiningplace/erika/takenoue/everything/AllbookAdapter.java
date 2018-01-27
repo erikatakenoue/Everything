@@ -1,5 +1,6 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;

@@ -64,7 +64,12 @@ public class StillFragment extends Fragment {
         mAllList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Book book = (Book) parent.getAdapter().getItem(position);
 
+                Intent intent = new Intent(getActivity(), DetailViewPagerActivity.class);
+                intent.putExtra(EXTRA_TASK, book.getId());
+
+                startActivity(intent);
             }
         });
 
@@ -114,9 +119,45 @@ public class StillFragment extends Fragment {
         mAllList.setAdapter(mAllbookAdapter);
         // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mAllbookAdapter.notifyDataSetChanged();
-
-
     }
+
+    public void idAsListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("id", Sort.ASCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+    public void idDeListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("id", Sort.DESCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+    public void dateAsListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("date", Sort.ASCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+    public void dateDeListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("date", Sort.DESCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+    public void titleListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("title", Sort.ASCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+    public void publisherListView() {
+        RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("publisherName", Sort.ASCENDING);
+        mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
+        mAllList.setAdapter(mAllbookAdapter);
+        mAllbookAdapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void onDestroy() {

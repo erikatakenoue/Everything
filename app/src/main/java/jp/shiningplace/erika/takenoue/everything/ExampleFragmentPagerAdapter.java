@@ -5,6 +5,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
+    private BookFragment bookFragment;
+    private CompletionFragment completionFragment;
+    private HalfwayFragment halfwayFragment;
+    private StillFragment stillFragment;
+    private ConcernFragment concernFragment;
     public ExampleFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -13,15 +18,30 @@ public class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return BookFragment.newInstance(android.R.color.transparent);
+                if(bookFragment==null){
+                    bookFragment=BookFragment.newInstance(android.R.color.transparent);
+                }
+                return bookFragment;
             case 1:
-                return CompletionFragment.newInstance(android.R.color.transparent);
+                if(completionFragment==null){
+                    completionFragment=CompletionFragment.newInstance(android.R.color.transparent);
+                }
+                return completionFragment;
             case 2:
-                return HalfwayFragment.newInstance(android.R.color.transparent);
+                if(halfwayFragment==null){
+                    halfwayFragment=HalfwayFragment.newInstance(android.R.color.transparent);
+                }
+                return halfwayFragment;
             case 3:
-                return StillFragment.newInstance(android.R.color.transparent);
+                if(stillFragment==null){
+                    stillFragment=StillFragment.newInstance(android.R.color.transparent);
+                }
+                return stillFragment;
             case 4:
-                return ConcernFragment.newInstance(android.R.color.transparent);
+                if(concernFragment==null){
+                    concernFragment=ConcernFragment.newInstance(android.R.color.transparent);
+                }
+                return concernFragment;
         }
         return null;
     }

@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:text="Everything"
                 android:gravity="center_vertical"
-                android:paddingStart="48dp"
+                android:layout_toRightOf="@+id/main_drawer_navigation"
                 android:textColor="@color/white"
                 android:textSize="40sp" />
             </android.support.v7.widget.Toolbar>
@@ -44,6 +44,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/white"
                 android:theme="@style/AppTheme2"
+                app:tabMode="scrollable"
                 app:tabIndicatorColor="@color/grad2">
 
             </android.support.design.widget.TabLayout>
@@ -126,7 +127,7 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/main_drawer_navigation"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"
