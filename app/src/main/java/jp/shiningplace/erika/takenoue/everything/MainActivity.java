@@ -1,15 +1,22 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.PermissionChecker;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -63,8 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
-                startActivity(intent);
+                //カメラのパーミッションのチェック
+                if (PermissionChecker.checkSelfPermission(
+                        MainActivity.this, Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // パーミッションをリクエストする
+                    requestCameraPermission();
+                    return;
+                } else {
+                    Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -75,6 +91,73 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.inflateMenu(R.menu.menu_main);
         setViews();
+    }
+
+    //パーミッション
+    private void requestCameraPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CAMERA)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("権限が必要です")
+                    .setMessage("バーコード機能の為、カメラの権限が必要です。")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(MainActivity.this,
+                                    new String[]{Manifest.permission.CAMERA},
+                                    99);
+                        }
+                    })
+                    .create()
+                    .show();
+            return;
+        }
+
+        // 権限を取得する
+        ActivityCompat.requestPermissions(this, new String[]{
+                        Manifest.permission.CAMERA}, 99);
+        return;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        if (requestCode == 99) {
+            if (grantResults.length != 1 ||
+                    grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.CAMERA)) {
+                    new AlertDialog.Builder(this)
+                            .setTitle("パーミッション取得エラー")
+                            .setMessage("再試行する場合は、再度ボタンを押してください")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            })
+                            .create()
+                            .show();
+
+                } else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("パーミッション取得エラー")
+                            .setMessage("今後は許可しないが選択されました。アプリ設定＞権限をチェックしてください（権限をON/OFFすることで状態はリセットされます）")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                }
+                            })
+                            .create()
+                            .show();
+                }
+            } else {
+                Intent intent = new Intent(MainActivity.this, BarcodeActivity.class);
+                startActivity(intent);
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     @Override
