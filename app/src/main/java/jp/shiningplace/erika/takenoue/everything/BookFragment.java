@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class BookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.allbook_main, null);
+
         mRealm = Realm.getDefaultInstance();
         mRealm.addChangeListener(mRealmListener);
         mAllList = (ListView) view.findViewById(R.id.listView1);
@@ -108,6 +110,12 @@ public class BookFragment extends Fragment {
 
         reloadListView();
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ViewCompat.setNestedScrollingEnabled(mAllList,true);
     }
 
     private void reloadListView() {
@@ -166,6 +174,8 @@ public class BookFragment extends Fragment {
 
         mRealm.close();
     }
+
+
 }
 
 

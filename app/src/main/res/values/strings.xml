@@ -11,4 +11,8 @@
         <item>コミック</item>
         <item>ムックその他</item>
     </string-array>
+
+    <string name="text_choose_backup_folder">バックアップフォルダを選択して下さい</string>
+    <string name="title_choose">選択</string>
+    <string name="dialog_cancel">キャンセル</string>
 </resources>

@@ -4,8 +4,11 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -30,7 +33,11 @@ import com.github.clans.fab.FloatingActionMenu;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.obsez.android.lib.filechooser.ChooserDialog;
+
 import android.graphics.Typeface;
+
+import java.io.File;
 
 import io.realm.Realm;
 
@@ -115,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 権限を取得する
         ActivityCompat.requestPermissions(this, new String[]{
-                        Manifest.permission.CAMERA}, 99);
+                Manifest.permission.CAMERA}, 99);
         return;
     }
 
@@ -159,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -204,20 +212,28 @@ public class MainActivity extends AppCompatActivity {
             if (id == R.id.nav_record) {
                 toolbar.setTitle("記録");
                 mGenre = 1;
+                Intent intent = new Intent(MainActivity.this, ChartActivity.class);
+                startActivity(intent);
             } else if (id == R.id.nav_lend) {
                 toolbar.setTitle("貸出");
                 mGenre = 2;
             } else if (id == R.id.nav_borrow) {
                 toolbar.setTitle("返却");
                 mGenre = 3;
-            } else if (id == R.id.nav_setting) {
-                toolbar.setTitle("設定");
+            } else if (id == R.id.nav_backup) {
                 mGenre = 4;
-                Intent intent = new Intent(MainActivity.this, BackupActivity.class);
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
+
             } else if (id == R.id.nav_contact) {
                 toolbar.setTitle("ご意見・お問い合わせ");
-                mGenre = 4;
+                mGenre = 5;
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:androidapp_real@yahoo.co.jp"));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Everything:ご意見・お問い合わせ");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(intent,"select"));
             }
             drawerLayout.closeDrawers();
             return true;
@@ -240,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void choosePrefecture() {
         final String[] items = {"登録日昇順", "登録日降順", "読了日昇順","読了日降順","作者順","出版社順"};
-        new android.support.v7.app.AlertDialog.Builder((this))
+        new AlertDialog.Builder((this))
                 .setTitle("並び替え")
                 .setItems(items, new DialogInterface.OnClickListener() {
                     Fragment fragment= (Fragment) adapter.getItem(viewPager.getCurrentItem());

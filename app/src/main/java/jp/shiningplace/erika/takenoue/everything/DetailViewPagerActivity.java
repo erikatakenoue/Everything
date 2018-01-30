@@ -1,8 +1,12 @@
 package jp.shiningplace.erika.takenoue.everything;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +18,11 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class DetailViewPagerActivity extends AppCompatActivity {
     private Book mBook;
+    int checkedItem=0;
     public final static String EXTRA_TASK = " jp.shiningplace.erika.takenoue.everything.TASK";
 
     @Override
@@ -54,7 +60,68 @@ public class DetailViewPagerActivity extends AppCompatActivity {
         ImageView imageDetail = findViewById(R.id.imageDetail2);
         Picasso.with(this).load(mBook.getLargeImageUrl()).into(imageDetail);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        findViewById(R.id.buttonDetail2).setOnClickListener(mOnDoneClickListener);
     }
+
+    private View.OnClickListener mOnDoneClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            choosePrefecture();
+        }
+    };
+
+    public void choosePrefecture() {
+        final String[] items = {"読了本", "読書中", "積読本", "気になる"};
+        int defaultItem = 0; // デフォルトでチェックされているアイテム
+        new AlertDialog.Builder((this))
+                .setTitle("ステータスを変更")
+                .setSingleChoiceItems(items, defaultItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        checkedItem=which;
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // item_which selected
+                        if (checkedItem == 0) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 1) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 2) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 3) {
+                            addBook(checkedItem);
+                            finish();
+                        }
+                    }
+
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void addBook(int shelf) {
+
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+
+        mBook.setShelf(shelf);
+
+        realm.copyToRealmOrUpdate(mBook);
+        realm.commitTransaction();
+
+        realm.close();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,10 +133,21 @@ public class DetailViewPagerActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_edit) {
+            if (id == R.id.action_edit) {
+                int taskId = getIntent().getIntExtra(BookFragment.EXTRA_TASK, -1);
+                Intent intent = new Intent(DetailViewPagerActivity.this, EditingActivity.class);
+                intent.putExtra(EXTRA_TASK, taskId);
 
-            return true;
+                startActivity(intent);
+            }
+            switch(item.getItemId()) {
+                case android.R.id.home:
+                    Intent intent = new Intent(DetailViewPagerActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
-        return true;
+
     }
-}
+

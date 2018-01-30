@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
     <application
         android:name=".BookApp"
@@ -61,8 +60,11 @@
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".EditingActivity"
-            android:parentActivityName=".DetailViewPagerActivity"
             android:label="編集画面"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".ChartActivity"
+            android:label="グラフ"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".SettingActivity"
@@ -70,11 +72,7 @@
             android:label="設定"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".BackupActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="バックアップ"
-            android:theme="@style/AppTheme">
-        </activity>
+
 
     </application>
 

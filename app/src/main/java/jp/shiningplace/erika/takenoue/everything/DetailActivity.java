@@ -132,8 +132,6 @@ public class DetailActivity extends AppCompatActivity {
         realm.close();
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
@@ -143,7 +141,4 @@ public class DetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }

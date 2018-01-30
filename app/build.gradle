@@ -40,5 +40,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
+    compile 'com.obsez.android.lib.filechooser:filechooser:1.1.5'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }

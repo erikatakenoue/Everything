@@ -6,7 +6,6 @@
         <item
             android:id="@+id/nav_record"
             android:icon="@drawable/ic_equalizer_black_24dp"
-
             android:title="記録"/>
         <item
             android:id="@+id/nav_lend"
@@ -20,9 +19,9 @@
     <group android:checkableBehavior="single"
         android:id="@+id/group_1">
         <item
-            android:id="@+id/nav_setting"
+            android:id="@+id/nav_backup"
             android:icon="@drawable/ic_settings_black_24dp"
-            android:title="設定"/>
+            android:title="バックアップ"/>
         <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ic_email_black_24dp"

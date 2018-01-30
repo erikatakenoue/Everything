@@ -21,8 +21,9 @@ import io.realm.Realm;
 
 public class EditingActivity extends AppCompatActivity {
     private int mEndYear, mEndMonth, mEndDay;
-    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit;
+    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit, mPublisher;
     private Book mBook;
+    public final static String EXTRA_TASK = " jp.shiningplace.erika.takenoue.everything.TASK";
 
     private View.OnClickListener mOnEndDateClickListener = new View.OnClickListener() {
         @Override
@@ -65,6 +66,8 @@ public class EditingActivity extends AppCompatActivity {
         mAuthorEdit = (EditText) findViewById(R.id.authorText);
         mContentEdit = (EditText) findViewById(R.id.contentText);
         mMenoEdit = (EditText) findViewById(R.id.memoText);
+        mPublisher =(EditText) findViewById(R.id.publisherText);
+
 
         Intent intent = getIntent();
         int taskId = intent.getIntExtra(BookFragment.EXTRA_TASK, -1);
@@ -72,21 +75,23 @@ public class EditingActivity extends AppCompatActivity {
         mBook = realm.where(Book.class).equalTo("id", taskId).findFirst();
         realm.close();
 
+        Calendar calendar = Calendar.getInstance();
+
+        mEndYear = calendar.get(Calendar.YEAR);
+        mEndMonth = calendar.get(Calendar.MONTH);
+        mEndDay = calendar.get(Calendar.DAY_OF_MONTH);
+
         mTitleEdit.setText(mBook.getTitle());
         mAuthorEdit.setText(mBook.getAuthor());
         mContentEdit.setText(mBook.getItemCaption());
         mMenoEdit.setText(mBook.getMemo());
         mDateEdit.setText(mBook.getSalesDate());
+        mPublisher.setText(mBook.getPublisherName());
 
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(mBook.getDate());
-        mEndYear = calendar.get(Calendar.YEAR);
-        mEndMonth = calendar.get(Calendar.MONTH);
-        mEndDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-        String enddateString = mEndYear + "/" + String.format("%02d", (mEndMonth + 1)) + "/" + String.format("%02d", mEndDay);
-        mEndDateEdit.setText(enddateString);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void addBook() {
@@ -99,11 +104,13 @@ public class EditingActivity extends AppCompatActivity {
         String content = mContentEdit.getText().toString();
         String memo = mMenoEdit.getText().toString();
         String saledate = mDateEdit.getText().toString();
+        String publisherName = mPublisher.getText().toString();
 
         mBook.setTitle(title);
         mBook.setAuthor(author);
         mBook.setItemCaption(content);
         mBook.setMemo(memo);
+        mBook.setPublisherName(publisherName);
         mBook.setSalesDate(saledate);
         GregorianCalendar calendar = new GregorianCalendar(mEndYear, mEndMonth, mEndDay);
         Date date = calendar.getTime();
@@ -113,6 +120,25 @@ public class EditingActivity extends AppCompatActivity {
         realm.commitTransaction();
 
         realm.close();
+
+        int taskId = getIntent().getIntExtra(BookFragment.EXTRA_TASK, -1);
+        Intent intent = new Intent(
+                EditingActivity.this, DetailViewPagerActivity.class);
+        intent.putExtra(EXTRA_TASK, taskId);
+
+        startActivity(intent);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
 

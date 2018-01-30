@@ -36,7 +36,7 @@ import io.realm.RealmResults;
 public class ManualActivity extends AppCompatActivity {
 
     private int mEndYear, mEndMonth, mEndDay;
-    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit;
+    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit, mPublisher;
     private Book mBook;
 
     private View.OnClickListener mOnEndDateClickListener = new View.OnClickListener() {
@@ -101,6 +101,7 @@ public class ManualActivity extends AppCompatActivity {
         mAuthorEdit = (EditText) findViewById(R.id.authorText);
         mContentEdit = (EditText) findViewById(R.id.contentText);
         mMenoEdit = (EditText) findViewById(R.id.memoText);
+        mPublisher =(EditText) findViewById(R.id.publisherText);
 
         Intent intent = getIntent();
         int taskId = intent.getIntExtra(BookFragment.EXTRA_TASK, -1);
@@ -140,9 +141,11 @@ public class ManualActivity extends AppCompatActivity {
         String content = mContentEdit.getText().toString();
         String memo = mMenoEdit.getText().toString();
         String saledate = mDateEdit.getText().toString();
+        String publisherName = mPublisher.getText().toString();
 
         mBook.setTitle(title);
         mBook.setAuthor(author);
+        mBook.setPublisherName(publisherName);
         mBook.setItemCaption(content);
         mBook.setMemo(memo);
         mBook.setSalesDate(saledate);
@@ -154,5 +157,8 @@ public class ManualActivity extends AppCompatActivity {
         realm.commitTransaction();
 
         realm.close();
+
+        Intent intent = new Intent(ManualActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -19,12 +19,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
         android:text="データ" />
-   <ListView
-       android:layout_width="match_parent"
-       android:layout_marginTop="10dp"
-       android:layout_height="120dp"
-       android:id="@+id/datalist"
-       android:layout_below="@+id/dataTextView"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="120dp"
+        android:id="@+id/datalist"
+        android:layout_below="@+id/dataTextView"/>
 
     <TextView
         android:id="@+id/contextTextView"

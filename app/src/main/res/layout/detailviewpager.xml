@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,6 +15,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
     <ImageView
         android:id="@+id/imageDetail2"
@@ -85,11 +91,28 @@
         android:layout_toRightOf="@+id/sizeDetailText2" />
 
     <TextView
+        android:id="@+id/enddateDetailText"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sizeDetailText2"
+        android:layout_marginTop="10dp"
+        android:text="読了日" />
+
+    <TextView
+        android:id="@+id/enddateDetailView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/sizeDetailText2"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/enddateDetailText"/>
+
+    <TextView
         android:id="@+id/itemCaptionDetailText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/sizeDetailText2"
+        android:layout_below="@+id/enddateDetailText"
         android:layout_marginTop="10dp"
         android:text="概要" />
 
@@ -113,7 +136,19 @@
         android:id="@+id/memoView2"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_below="@+id/memoView2"
+        android:layout_below="@+id/memoText2"
         android:layout_alignParentStart="true" />
 
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/buttonDetail2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:bootstrapSize="lg"
+        android:layout_below="@+id/memoView2"
+        android:layout_marginTop="30dp"
+        android:text="ステータス変更"
+        app:roundedCorners="true"
+        app:bootstrapBrand="info"/>
+
 </RelativeLayout>
+</ScrollView>

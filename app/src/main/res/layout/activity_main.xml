@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,12 +61,12 @@
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/material_design_android_floating_action_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|end"
             fab:menu_icon="@drawable/fab_add"
             fab:menu_animationDelayPerItem="55"
-            fab:menu_backgroundColor="@android:color/transparent"
+            fab:menu_backgroundColor="#ccffffff"
             fab:menu_buttonSpacing="0dp"
             fab:menu_colorNormal="@color/grad1"
             fab:menu_colorPressed="@color/grad1"
@@ -135,3 +137,4 @@
         app:menu="@menu/menu_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
+
