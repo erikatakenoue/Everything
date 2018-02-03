@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/titleborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:textSize="@dimen/text_medium"
+            android:text="タイトル" />
+
+        <EditText
+            android:id="@+id/titleborrowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/titleborrow"
+            android:gravity="top"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/authorborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/titleborrowText"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:text="著者" />
+
+        <EditText
+            android:id="@+id/authorborrowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/authorborrow"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="10" />
+
+        <TextView
+            android:id="@+id/whoborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/authorborrowText"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:text="誰に(どこに)" />
+
+        <EditText
+            android:id="@+id/whoborrowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/whoborrow"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="10" />
+
+        <TextView
+            android:id="@+id/whenborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/whoborrowText"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:text="いつまでに" />
+
+        <EditText
+            android:id="@+id/whenborrowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/whenborrow"
+            android:gravity="top"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="date"
+            android:maxLines="10" />
+
+        <TextView
+            android:id="@+id/memoborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/whenborrowText"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:text="メモ" />
+
+        <EditText
+            android:id="@+id/memoborrowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/memoborrow"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="10" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/borrowbutton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:bootstrapSize="lg"
+            android:layout_below="@+id/memoborrowText"
+            android:layout_marginTop="50dp"
+            android:text="登録"
+            app:roundedCorners="true"
+            app:bootstrapBrand="info" />
+
+    </RelativeLayout>
+</ScrollView>

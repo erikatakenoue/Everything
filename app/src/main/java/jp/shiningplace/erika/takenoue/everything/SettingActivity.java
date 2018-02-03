@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,25 +24,20 @@ import android.widget.ListView;
 
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.internal.IOException;
-
 
 public class SettingActivity extends AppCompatActivity {
     private ListView listView,listView2;
@@ -65,7 +62,7 @@ public class SettingActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) listView.getItemAtPosition(position);
                 if (item.equals("バックアップ")) {
                     new ChooserDialog().with(SettingActivity.this)
@@ -76,7 +73,6 @@ public class SettingActivity extends AppCompatActivity {
                                 @Override
                                 public void onChoosePath(final String path, File pathFile) {final EditText editView = new EditText(SettingActivity.this);
                                     AlertDialog show = new AlertDialog.Builder(SettingActivity.this)
-                                            .setIcon(android.R.drawable.ic_dialog_info)
                                             .setTitle("ファイル名を記入してください。")
                                             //setViewにてビューを設定します。
                                             .setView(editView)
@@ -91,7 +87,6 @@ public class SettingActivity extends AppCompatActivity {
                                                             String filePath = path + "/" + title;
                                                             File file = new File(filePath);
                                                             file.getParentFile().mkdir();
-
                                                             FileOutputStream fos;
                                                             try {
                                                                 fos = new FileOutputStream(file, true);
@@ -120,6 +115,8 @@ public class SettingActivity extends AppCompatActivity {
                                                         }
                                                     });
                                                     thread.start();
+                                                    Snackbar snackbar = Snackbar.make(view, "バックアップ完了しました。", Snackbar.LENGTH_SHORT);
+                                                    snackbar.show();
                                                 }
                                             })
                                             .setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
@@ -128,11 +125,9 @@ public class SettingActivity extends AppCompatActivity {
                                             })
                                             .show();
                                 }
-
                             })
                             .build()
                             .show();
-
                 } else if (item.equals("リストア（復元）")) {
                     new ChooserDialog().with(SettingActivity.this)
                             .withStartFile(path)
@@ -142,7 +137,6 @@ public class SettingActivity extends AppCompatActivity {
                                     try {
                                         FileInputStream fis = new FileInputStream(path);
                                         InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
-
                                         BufferedReader br = new BufferedReader(isr);
                                         Realm realm = Realm.getDefaultInstance();
                                         String s;
@@ -177,6 +171,8 @@ public class SettingActivity extends AppCompatActivity {
                                     } catch (java.io.IOException e) {
                                         e.printStackTrace();
                                     }
+                                    Snackbar snackbar = Snackbar.make(view, "リストア(復元)完了しました。", Snackbar.LENGTH_SHORT);
+                                    snackbar.show();
                                 }
                             })
                             .build()
@@ -185,16 +181,32 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-
         ArrayAdapter<String> arrayAdapter2 =
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
 
         arrayAdapter2.add("このアプリについて");
-        arrayAdapter2.add("アプリ評価");
-        arrayAdapter2.add("友達に教える");
+        arrayAdapter2.add("プライバシーポリシー");
 
         listView2.setAdapter(arrayAdapter2);
 
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                final String item = (String) listView2.getItemAtPosition(position);
+                if (item.equals("このアプリについて")) {
+                    new AlertDialog.Builder(SettingActivity.this)
+                            .setTitle("Everything")
+                            .setMessage("\n" + "Ver.1.0 Real.E" + "\n" + "\n" +
+                                    "最新機能(2018.2.4)")
+                            .setNegativeButton("閉じる", null)
+                            .show();
+                } else if (item.equals("プライバシーポリシー")) {
+                    Uri uri = Uri.parse("https://www.facebook.com/notes/real-app/everythingprivacy-policy/115483049267435/");
+                    Intent i = new Intent(Intent.ACTION_VIEW,uri);
+                    startActivity(i);
+                }
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -219,7 +231,6 @@ public class SettingActivity extends AppCompatActivity {
                         Manifest.permission.WRITE_EXTERNAL_STORAGE}, 999);
             }
         }
-
     }
 
     @Override
@@ -241,6 +252,5 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void startBackup(String folderPath){
-
     }
 }

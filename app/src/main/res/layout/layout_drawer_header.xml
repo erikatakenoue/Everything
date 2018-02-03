@@ -8,10 +8,5 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="30dp"
-    android:background="@color/colorPrimary">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Menu" />
+    android:background="@color/grad1">
 </LinearLayout>

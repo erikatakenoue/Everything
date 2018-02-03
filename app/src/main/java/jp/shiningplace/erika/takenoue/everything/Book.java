@@ -108,5 +108,4 @@ public class Book extends RealmObject implements Serializable {
     public void setMemo(String memo) {
         this.memo = memo;
     }
-
 }

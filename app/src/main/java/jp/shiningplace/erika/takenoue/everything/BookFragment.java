@@ -62,7 +62,6 @@ public class BookFragment extends Fragment {
         mAllbookAdapter = new AllbookAdapter(getActivity());
 
         // ListViewをタップしたときの処理
-        // 編集画面に移行
         mAllList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -107,7 +106,6 @@ public class BookFragment extends Fragment {
                 return true;
             }
         });
-
         reloadListView();
         return view;
     }
@@ -120,14 +118,9 @@ public class BookFragment extends Fragment {
 
     private void reloadListView() {
         RealmResults<Book> taskRealmResults = mRealm.where(Book.class).findAllSorted("date", Sort.DESCENDING);
-        // 上記の結果を、TaskList としてセットする
         mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
-        // TaskのListView用のアダプタに渡す
         mAllList.setAdapter(mAllbookAdapter);
-        // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mAllbookAdapter.notifyDataSetChanged();
-
-
     }
 
     public void idAsListView() {
@@ -174,8 +167,6 @@ public class BookFragment extends Fragment {
 
         mRealm.close();
     }
-
-
 }
 
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_small">12dp</dimen>
+    <dimen name="text_medium">14dp</dimen>
+    <dimen name="text_large">16dp</dimen>
+    <dimen name="image_width">65dp</dimen>
+    <dimen name="image_height">85dp</dimen>
+    <dimen name="image_width2">110dp</dimen>
+    <dimen name="image_height2">130dp</dimen>
+    <dimen name="Top">10dp</dimen>
+    <dimen name="Top2">20dp</dimen>
+    <dimen name="Bottom">10dp</dimen>
+    <dimen name="Start">20dp</dimen>
+    <dimen name="Top_sub">20dp</dimen>
+    <dimen name="Top_sub2">30dp</dimen>
+    <dimen name="Start3">30dp</dimen>
+    <dimen name="text">14dp</dimen>
+
+    <dimen name="lb_text">15dp</dimen>
+    <dimen name="lb_text2">14dp</dimen>
+    <dimen name="lb_text3">14dp</dimen>
+    <dimen name="Start2">20dp</dimen>
+    <dimen name="Top3">10dp</dimen>
+    <dimen name="Top4">30dp</dimen>
+</resources>

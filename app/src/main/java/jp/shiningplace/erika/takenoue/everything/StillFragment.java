@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +89,6 @@ public class StillFragment extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         RealmResults<Book> results = mRealm.where(Book.class).equalTo("id", book.getId()).findAll();
 
                         mRealm.beginTransaction();
@@ -106,18 +106,20 @@ public class StillFragment extends Fragment {
                 return true;
             }
         });
-
         reloadListView();
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ViewCompat.setNestedScrollingEnabled(mAllList,true);
+    }
+
     private void reloadListView() {
         RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",2).findAllSorted("date", Sort.DESCENDING);
-        // 上記の結果を、TaskList としてセットする
         mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
-        // TaskのListView用のアダプタに渡す
         mAllList.setAdapter(mAllbookAdapter);
-        // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mAllbookAdapter.notifyDataSetChanged();
     }
 
@@ -157,7 +159,6 @@ public class StillFragment extends Fragment {
         mAllList.setAdapter(mAllbookAdapter);
         mAllbookAdapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onDestroy() {

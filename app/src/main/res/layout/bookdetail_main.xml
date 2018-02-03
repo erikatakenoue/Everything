@@ -1,121 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:id="@+id/detailLayout"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <ImageView
-        android:id="@+id/imageDetail"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_alignParentTop="true" />
-
-    <TextView
-        android:id="@+id/titleDetail"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/imageDetail" />
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:id="@+id/detailLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:id="@+id/authorDetail"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:layout_alignBottom="@+id/imageDetail"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/imageDetail" />
+        <ImageView
+            android:id="@+id/imageDetail"
+            android:layout_width="@dimen/image_width2"
+            android:layout_height="@dimen/image_height2"
+            android:layout_marginStart="@dimen/Start"
+            android:layout_alignParentTop="true"/>
 
-    <TextView
-        android:id="@+id/publisherDetailText"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageDetail"
-        android:layout_marginTop="20dp"
-        android:text="出版社" />
+        <TextView
+            android:id="@+id/titleDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/imageDetail" />
 
-    <TextView
-        android:id="@+id/publisherDetailView"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/imageDetail"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/publisherDetailText" />
+        <TextView
+            android:id="@+id/authorDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignBottom="@+id/imageDetail"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/imageDetail" />
 
-    <TextView
-        android:id="@+id/dateDetailText"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/publisherDetailText"
-        android:layout_marginTop="10dp"
-        android:text="発売日" />
+        <TextView
+            android:id="@+id/publisherDetailText"
+            android:layout_width="80dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageDetail"
+            android:layout_marginTop="@dimen/Top4"
+            android:layout_marginStart="@dimen/Start"
+            android:text="出版社" />
 
-    <TextView
-        android:id="@+id/dateDetailView"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/publisherDetailView"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/dateDetailText"/>
+        <TextView
+            android:id="@+id/publisherDetailView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_medium"
+            android:layout_below="@+id/imageDetail"
+            android:layout_marginTop="@dimen/Top4"
+            android:layout_toRightOf="@+id/publisherDetailText" />
 
-    <TextView
-        android:id="@+id/sizeDetailText"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/dateDetailView"
-        android:layout_marginTop="10dp"
-        android:text="分類" />
+        <TextView
+            android:id="@+id/dateDetailText"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_medium"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/Start"
+            android:layout_below="@+id/publisherDetailText"
+            android:layout_marginTop="@dimen/Top2"
+            android:text="発売日" />
 
-    <TextView
-        android:id="@+id/sizeDetailView"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/dateDetailText"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/sizeDetailText" />
+        <TextView
+            android:id="@+id/dateDetailView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/publisherDetailView"
+            android:layout_marginTop="@dimen/Top2"
+            android:textSize="@dimen/text_medium"
+            android:layout_toRightOf="@+id/dateDetailText"/>
 
-    <TextView
-        android:id="@+id/itemCaptionDetailText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/sizeDetailView"
-        android:layout_marginTop="10dp"
-        android:text="概要" />
+        <TextView
+            android:id="@+id/sizeDetailText"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/Start"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/dateDetailView"
+            android:layout_marginTop="@dimen/Top2"
+            android:text="サイズ" />
 
-    <TextView
-        android:id="@+id/itemCaptionDetailView"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_below="@+id/itemCaptionDetailText"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/sizeDetailView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateDetailText"
+            android:layout_marginTop="@dimen/Top2"
+            android:textSize="@dimen/text_medium"
+            android:layout_toRightOf="@+id/sizeDetailText" />
 
-    <com.beardedhen.androidbootstrap.BootstrapButton
-        android:id="@+id/buttonDetail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:bootstrapSize="lg"
-        android:layout_below="@+id/itemCaptionDetailView"
-        android:layout_marginTop="30dp"
-        android:text="登録"
-        app:roundedCorners="true"
-        app:bootstrapBrand="info"/>
+        <TextView
+            android:id="@+id/itemCaptionDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/Start"
+            android:layout_alignParentStart="true"
+            android:textSize="@dimen/text_medium"
+            android:layout_below="@+id/sizeDetailText"
+            android:layout_marginTop="@dimen/Top4"
+            android:text="概要" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/itemCaptionDetailView"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/Start"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="@dimen/Top_sub"
+            android:textSize="@dimen/text_medium"
+            android:layout_below="@+id/itemCaptionDetailText"
+            android:layout_alignParentStart="true" />
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/buttonDetail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:bootstrapSize="lg"
+            android:layout_below="@+id/itemCaptionDetailView"
+            android:layout_marginTop="30dp"
+            android:text="登録"
+            app:roundedCorners="true"
+            app:bootstrapBrand="info"/>
+
+    </RelativeLayout>
+</ScrollView>

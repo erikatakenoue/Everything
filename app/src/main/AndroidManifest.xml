@@ -10,12 +10,13 @@
     <application
         android:name=".BookApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ManualActivity"
+            android:screenOrientation="portrait"
             android:label="手動登録"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
@@ -31,6 +33,7 @@
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity" />
         </activity>
         <activity android:name=".BarcodeActivity"
+            android:screenOrientation="portrait"
             android:label="バーコードから登録"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
@@ -39,6 +42,7 @@
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
         </activity>
         <activity android:name=".SearchActivity"
+            android:screenOrientation="portrait"
             android:label="検索から登録"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme">
@@ -47,29 +51,79 @@
                 android:value="jp.shiningplace.erika.takenoue.everything.MainActivity"/>
         </activity>
         <activity android:name=".SearchListActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".SearchActivity"
             android:label="検索結果"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".DetailActivity"
+            android:screenOrientation="portrait"
             android:label="詳細画面"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".DetailViewPagerActivity"
+            android:screenOrientation="portrait"
             android:label="本の詳細"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".EditingActivity"
+            android:screenOrientation="portrait"
             android:label="編集画面"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".ChartActivity"
+            android:screenOrientation="portrait"
             android:label="グラフ"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".SettingActivity"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="設定"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".LendActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:label="貸出"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".LendDetail"
+            android:screenOrientation="portrait"
+            android:label="詳細"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".LendInput"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".LendActivity"
+            android:label="記入画面"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".LendEditing"
+            android:screenOrientation="portrait"
+            android:label="編集画面"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".BorrowActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:label="返却"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".BorrowDetail"
+            android:screenOrientation="portrait"
+            android:label="詳細"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".BorrowInput"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".BorrowActivity"
+            android:label="記入画面"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".BorrowEditing"
+            android:screenOrientation="portrait"
+            android:label="編集画面"
             android:theme="@style/AppTheme">
         </activity>
 

@@ -1,6 +1,9 @@
 package jp.shiningplace.erika.takenoue.everything;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -51,7 +55,6 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         findViewById(R.id.buttonDetail).setOnClickListener(mOnDoneClickListener);
-
     }
 
     private View.OnClickListener mOnDoneClickListener = new View.OnClickListener() {
@@ -72,31 +75,35 @@ public class DetailActivity extends AppCompatActivity {
                         checkedItem=which;
                     }
                 })
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("登録", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        RelativeLayout layout = findViewById(R.id.detailLayout);
                         // item_which selected
                         if (checkedItem == 0) {
                             addBook(checkedItem);
-                            finish();
                         } else if (checkedItem == 1) {
                             addBook(checkedItem);
-                            finish();
                         } else if (checkedItem == 2) {
                             addBook(checkedItem);
-                            finish();
                         } else if (checkedItem == 3) {
                             addBook(checkedItem);
-                            finish();
                         }
+                        Snackbar snackbar = Snackbar.make(layout, "登録しました。", Snackbar.LENGTH_LONG);
+                        snackbar.setActionTextColor(Color.rgb(251,194,235));
+                        snackbar.setAction("本棚を見る", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        snackbar.show();
                     }
-
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
     }
-
-
 
     private void addBook(int shelf) {
 
@@ -117,7 +124,6 @@ public class DetailActivity extends AppCompatActivity {
         mBook.setShelf(shelf);
 
         BookItem bookitem = getIntent().getParcelableExtra("item");
-
 
         mBook.setTitle(bookitem.title);
         mBook.setAuthor(bookitem.author);

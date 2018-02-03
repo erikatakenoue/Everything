@@ -5,11 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
@@ -33,24 +29,16 @@ import com.github.clans.fab.FloatingActionMenu;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import android.graphics.Typeface;
-
-import java.io.File;
-
-import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     FloatingActionMenu materialDesignFAM;
     FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
-    private Realm mRealm;
-    private int mGenre = 0;
     private ViewPager viewPager;
     private ExampleFragmentPagerAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
@@ -140,12 +129,10 @@ public class MainActivity extends AppCompatActivity {
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
                                 }
                             })
                             .create()
                             .show();
-
                 } else {
                     new AlertDialog.Builder(this)
                             .setTitle("パーミッション取得エラー")
@@ -167,18 +154,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (intentResult != null) {
             String content = intentResult.getContents();
             Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
         }
     }
-
 
     private void setViews() {
         setSupportActionBar(toolbar);
@@ -189,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
         setDrawer();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.main_tab);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     private void setDrawer() {
@@ -210,24 +193,22 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_record) {
-                toolbar.setTitle("記録");
-                mGenre = 1;
                 Intent intent = new Intent(MainActivity.this, ChartActivity.class);
                 startActivity(intent);
+
             } else if (id == R.id.nav_lend) {
-                toolbar.setTitle("貸出");
-                mGenre = 2;
+                Intent intent = new Intent(MainActivity.this, LendActivity.class);
+                startActivity(intent);
+
             } else if (id == R.id.nav_borrow) {
-                toolbar.setTitle("返却");
-                mGenre = 3;
+                Intent intent = new Intent(MainActivity.this, BorrowActivity.class);
+                startActivity(intent);
+
             } else if (id == R.id.nav_backup) {
-                mGenre = 4;
                 Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
 
             } else if (id == R.id.nav_contact) {
-                toolbar.setTitle("ご意見・お問い合わせ");
-                mGenre = 5;
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:androidapp_real@yahoo.co.jp"));

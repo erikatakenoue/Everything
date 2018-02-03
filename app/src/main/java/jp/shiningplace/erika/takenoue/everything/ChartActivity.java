@@ -69,7 +69,6 @@ public class ChartActivity extends AppCompatActivity {
         right.setDrawZeroLine(true);
         right.setDrawTopYLabelEntry(true);
 
-
         //X軸
         XAxis bottomAxis = chart.getXAxis();
         bottomAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -102,7 +101,7 @@ public class ChartActivity extends AppCompatActivity {
         Realm realm = Realm.getDefaultInstance();
         ArrayList<BarEntry> entries = new ArrayList<>();
         for (int i = 0; i < 12; i++) {//12ヶ月分繰り返す
-//月毎の１日と、最終日のDateを作成する（時分秒は０にしておく）,
+            // 月毎の１日と、最終日のDateを作成する（時分秒は０にしておく）,
 
             Calendar cal = Calendar.getInstance();
             cal.set(Calendar.MONTH, i);
@@ -115,40 +114,38 @@ public class ChartActivity extends AppCompatActivity {
             cal.add(Calendar.MONTH, 1);//月の最終日にするため、一旦翌月の１日にして、そこから１ミリ秒減らす事で厳密な最終日の２３時５９分５９秒９９９ミリ秒にする
             cal.add(Calendar.MILLISECOND, -1);
             Date monthEnd = cal.getTime();
-//生成した１日～最終日のデータをRealmから検索する
+            //生成した１日～最終日のデータをRealmから検索する
             RealmResults<Book> books = realm.where(Book.class).between("date", monthStart, monthEnd).findAll();
-//取得したデータの件数をグラフに適用する
+            //取得したデータの件数をグラフに適用する
             entries.add(new BarEntry(i, books.size()));
-
         }
         realm.close();
 
         List<IBarDataSet> bars = new ArrayList<>();
         BarDataSet dataSet = new BarDataSet(entries, "bar");
 
-//整数で表示
+        //整数で表示
         dataSet.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 return "" + (int) value;
             }
         });
-//ハイライトさせない
+        //ハイライトさせない
         dataSet.setHighlightEnabled(false);
 
-//Barの色をセット
-        dataSet.setColors(new int[]{R.color.grad1, R.color.grad1, R.color.grad1}, this);
+        //Barの色をセット
+        dataSet.setColors(new int[]{R.color.grad2, R.color.grad2, R.color.grad2}, this);
         bars.add(dataSet);
 
         BarData data = new BarData(bars);
         chart.setData(data);
-
     }
 
     private void setupYearly() {
         Realm realm = Realm.getDefaultInstance();
 
-//グラフに表示するため、最小と最大の日付を取得する
+        //グラフに表示するため、最小と最大の日付を取得する
         Date minDate = realm.where(Book.class).minimumDate("date");
         Date maxDate = realm.where(Book.class).maximumDate("date");
         List<String> labelList = new ArrayList<String>();
@@ -159,8 +156,7 @@ public class ChartActivity extends AppCompatActivity {
             minCalendar.setTime(minDate);
             maxCalendar.setTime(maxDate);
 
-//minからmaxまで１年分ずつデータをセットしていく
-
+            //minからmaxまで１年分ずつデータをセットしていく
             int i = 0;
             while (minCalendar.getTimeInMillis() <= maxCalendar.getTimeInMillis()) {
                 labelList.add(Integer.toString(minCalendar.get(Calendar.YEAR)));
@@ -192,18 +188,18 @@ public class ChartActivity extends AppCompatActivity {
         List<IBarDataSet> bars = new ArrayList<>();
         BarDataSet dataSet = new BarDataSet(entries, "bar");
 
-//整数で表示
+        //整数で表示
         dataSet.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 return "" + (int) value;
             }
         });
-//ハイライトさせない
+        //ハイライトさせない
         dataSet.setHighlightEnabled(false);
 
-//Barの色をセット
-        dataSet.setColors(new int[]{R.color.grad1, R.color.grad1, R.color.grad1}, this);
+        //Barの色をセット
+        dataSet.setColors(new int[]{R.color.grad2, R.color.grad2, R.color.grad2}, this);
         bars.add(dataSet);
 
         BarData data = new BarData(bars);
@@ -238,7 +234,6 @@ public class ChartActivity extends AppCompatActivity {
             .show();
         }
 
-
         switch(item.getItemId()) {
             case android.R.id.home:
                 Intent intent = new Intent(ChartActivity.this, MainActivity.class);
@@ -247,6 +242,5 @@ public class ChartActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
 

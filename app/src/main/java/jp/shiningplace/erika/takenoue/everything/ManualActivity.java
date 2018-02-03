@@ -1,31 +1,16 @@
 package jp.shiningplace.erika.takenoue.everything;
 
-import android.Manifest;
 import android.app.DatePickerDialog;
-import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
-
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -34,10 +19,10 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class ManualActivity extends AppCompatActivity {
-
     private int mEndYear, mEndMonth, mEndDay;
-    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit, mPublisher;
+    private EditText mTitleEdit, mAuthorEdit, mContentEdit, mDateEdit, mEndDateEdit, mMenoEdit, mPublisher, mSizeEdit;
     private Book mBook;
+    int checkedItem=0;
 
     private View.OnClickListener mOnEndDateClickListener = new View.OnClickListener() {
         @Override
@@ -60,36 +45,48 @@ public class ManualActivity extends AppCompatActivity {
     private View.OnClickListener mOnDoneClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            addBook();
-            finish();
+            choosePrefecture();
         }
     };
 
-
+    public void choosePrefecture() {
+        final String[] items = {"読了本", "読書中", "積読本", "気になる"};
+        int defaultItem = 0; // デフォルトでチェックされているアイテム
+        new AlertDialog.Builder((this))
+                .setTitle("本棚に登録")
+                .setSingleChoiceItems(items, defaultItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        checkedItem=which;
+                    }
+                })
+                .setPositiveButton("登録", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // item_which selected
+                        if (checkedItem == 0) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 1) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 2) {
+                            addBook(checkedItem);
+                            finish();
+                        } else if (checkedItem == 3) {
+                            addBook(checkedItem);
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manual);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_manual);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                Spinner spinner = (Spinner) parent;
-                String item = (String) spinner.getSelectedItem();
-                mBook.setSize(item);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
 
         TypefaceProvider.registerDefaultIconSets();
 
@@ -102,6 +99,7 @@ public class ManualActivity extends AppCompatActivity {
         mContentEdit = (EditText) findViewById(R.id.contentText);
         mMenoEdit = (EditText) findViewById(R.id.memoText);
         mPublisher =(EditText) findViewById(R.id.publisherText);
+        mSizeEdit =(EditText)findViewById(R.id.sizeText);
 
         Intent intent = getIntent();
         int taskId = intent.getIntExtra(BookFragment.EXTRA_TASK, -1);
@@ -115,8 +113,7 @@ public class ManualActivity extends AppCompatActivity {
         mEndDay = calendar.get(Calendar.DAY_OF_MONTH);
     }
 
-
-    private void addBook() {
+    private void addBook(int shelf) {
         Realm realm = Realm.getDefaultInstance();
 
         realm.beginTransaction();
@@ -142,6 +139,7 @@ public class ManualActivity extends AppCompatActivity {
         String memo = mMenoEdit.getText().toString();
         String saledate = mDateEdit.getText().toString();
         String publisherName = mPublisher.getText().toString();
+        String size = mSizeEdit.getText().toString();
 
         mBook.setTitle(title);
         mBook.setAuthor(author);
@@ -149,9 +147,14 @@ public class ManualActivity extends AppCompatActivity {
         mBook.setItemCaption(content);
         mBook.setMemo(memo);
         mBook.setSalesDate(saledate);
+        mBook.setSize(size);
+        mBook.setShelf(shelf);
+
         GregorianCalendar calendar = new GregorianCalendar(mEndYear, mEndMonth, mEndDay);
-        Date date = calendar.getTime();
-        mBook.setDate(date);
+        if (mEndDateEdit.getText().toString().equals("") == false) {
+            Date date = calendar.getTime();
+            mBook.setDate(date);
+        }
 
         realm.copyToRealmOrUpdate(mBook);
         realm.commitTransaction();

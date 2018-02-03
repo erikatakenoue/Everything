@@ -17,6 +17,7 @@ import java.util.List;
 
 public class BarcodeActivity extends AppCompatActivity {
     private CompoundBarcodeView mBarcodeView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,18 +106,20 @@ public class ConcernFragment extends Fragment {
                 return true;
             }
         });
-
         reloadListView();
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        ViewCompat.setNestedScrollingEnabled(mAllList,true);
+    }
+
     private void reloadListView() {
         RealmResults<Book> taskRealmResults = mRealm.where(Book.class).equalTo("shelf",3).findAllSorted("date", Sort.DESCENDING);
-        // 上記の結果を、TaskList としてセットする
         mAllbookAdapter.setTaskList(mRealm.copyFromRealm(taskRealmResults));
-        // TaskのListView用のアダプタに渡す
         mAllList.setAdapter(mAllbookAdapter);
-        // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mAllbookAdapter.notifyDataSetChanged();
     }
 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/titlelend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/Top_sub"
+        android:textSize="@dimen/text_medium"
+        android:text="タイトル" />
+
+    <EditText
+        android:id="@+id/titlelendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/titlelend"
+        android:gravity="top"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/authorlend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/text_medium"
+        android:layout_below="@+id/titlelendText"
+        android:layout_marginTop="@dimen/Top_sub"
+        android:text="著者" />
+
+    <EditText
+        android:id="@+id/authorlendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/authorlend"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10" />
+
+    <TextView
+        android:id="@+id/wholend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/authorlendText"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top_sub"
+        android:text="誰に(どこに)" />
+
+    <EditText
+        android:id="@+id/wholendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/wholend"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10" />
+
+    <TextView
+        android:id="@+id/whenlend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/wholendText"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top_sub"
+        android:text="いつ" />
+
+    <EditText
+        android:id="@+id/whenlendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/whenlend"
+        android:gravity="top"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="date"
+        android:maxLines="10" />
+
+    <TextView
+        android:id="@+id/memolend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/whenlendText"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top_sub"
+        android:text="メモ" />
+
+    <EditText
+        android:id="@+id/memolendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/memolend"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/lendbutton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:bootstrapSize="lg"
+        android:layout_below="@+id/memolendText"
+        android:layout_marginTop="50dp"
+        android:text="登録"
+        app:roundedCorners="true"
+        app:bootstrapBrand="info" />
+
+</RelativeLayout>
+</ScrollView>

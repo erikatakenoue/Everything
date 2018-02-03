@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,8 +18,10 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Top3"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:textSize="@dimen/text_medium"
         android:text="タイトル" />
 
     <EditText
@@ -38,6 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/titleText"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top3"
         android:text="著者" />
 
     <EditText
@@ -55,6 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top3"
         android:layout_below="@+id/authorText"
         android:text="出版社" />
 
@@ -70,21 +75,24 @@
 
     <TextView
         android:id="@+id/sizeView"
-        android:layout_width="180dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/publisherText"
-        android:text="分類" />
+        android:layout_marginTop="@dimen/Top3"
+        android:textSize="@dimen/text_medium"
+        android:text="サイズ" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/sizeText"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/daysText"
-        android:layout_alignBottom="@+id/daysText"
         android:layout_alignParentStart="true"
-        android:entries="@array/list"
-        android:spinnerMode="dialog" />
+        android:layout_below="@+id/sizeView"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10" />
+
 
     <TextView
         android:id="@+id/daysView"
@@ -92,6 +100,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/publisherText"
         android:layout_toRightOf="@+id/sizeView"
+        android:layout_marginTop="@dimen/Top3"
+        android:textSize="@dimen/text_medium"
         android:text="発売日" />
 
     <EditText
@@ -99,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sizeView"
-        android:layout_toRightOf="@+id/spinner"
+        android:layout_toRightOf="@+id/sizeText"
         android:gravity="top"
         android:inputType="date"
         android:maxLines="10" />
@@ -109,6 +119,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top3"
         android:layout_below="@+id/daysText"
         android:text="内容" />
 
@@ -127,7 +139,8 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/contentText"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/Top3"
+        android:textSize="@dimen/text_medium"
         android:text="読了日" />
 
     <EditText
@@ -147,7 +160,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/enddateText"
-        android:layout_marginTop="12dp"
+        android:textSize="@dimen/text_medium"
+        android:layout_marginTop="@dimen/Top3"
         android:text="メモ" />
 
     <EditText

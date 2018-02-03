@@ -1,17 +1,5 @@
 <resources>
     <string name="app_name">Everything</string>
-    <string-array name="list">
-        <item>単行本</item>
-        <item>文庫</item>
-        <item>新書</item>
-        <item>全集・双書</item>
-        <item>事・辞典</item>
-        <item>図鑑</item>
-        <item>絵本</item>
-        <item>コミック</item>
-        <item>ムックその他</item>
-    </string-array>
-
     <string name="text_choose_backup_folder">バックアップフォルダを選択して下さい</string>
     <string name="title_choose">選択</string>
     <string name="dialog_cancel">キャンセル</string>

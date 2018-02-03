@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/grad1</item>
         <item name="drawerArrowStyle">@style/CustomDrawerArrowStyle</item>
 
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/grad1</item>
+        <item name="colorPrimaryDark">@color/grad1</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

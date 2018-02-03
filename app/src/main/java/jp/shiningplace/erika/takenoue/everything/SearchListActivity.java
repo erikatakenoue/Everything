@@ -3,7 +3,6 @@ package jp.shiningplace.erika.takenoue.everything;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.ListView;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -71,9 +69,7 @@ public class SearchListActivity extends AppCompatActivity {
                     });
                 }
             });
-
             thread.start();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

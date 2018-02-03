@@ -67,5 +67,4 @@ public class ExampleFragmentPagerAdapter extends FragmentPagerAdapter {
         }
         return null;
     }
-
 }

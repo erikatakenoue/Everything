@@ -2,7 +2,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="16dp"
@@ -17,12 +16,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:text="データ" />
+        android:layout_marginTop="@dimen/Top"
+        android:textSize="@dimen/text"
+        android:text="データ(※貸出と返却は対象ではありません)" />
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="120dp"
+        android:layout_marginTop="@dimen/Top"
+        android:layout_height="wrap_content"
         android:id="@+id/datalist"
         android:layout_below="@+id/dataTextView"/>
 
@@ -32,12 +33,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/datalist"
-        android:layout_marginTop="10dp"
+        android:textSize="@dimen/text"
+        android:layout_marginTop="@dimen/Top"
         android:text="概要" />
+
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/Top"
         android:layout_below="@id/contextTextView"
         android:id="@+id/contentlist"/>
+
 </RelativeLayout>

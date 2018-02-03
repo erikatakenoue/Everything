@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/lendDetail1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:textColor="@color/grad2"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/Start2"
+            android:text="タイトル"
+            android:layout_marginTop="@dimen/Top3" />
+
+        <TextView
+            android:id="@+id/lendDetail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_below="@+id/lendDetail1"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/lendDetail3"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/lb_text3"
+            android:textColor="@color/grad2"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lendDetail2"
+            android:layout_marginTop="@dimen/Top4"
+            android:layout_marginStart="@dimen/Start2"
+            android:text="著者" />
+
+        <TextView
+            android:id="@+id/lendDetail4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_below="@+id/lendDetail3"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/lendDetail5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:textColor="@color/grad2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_below="@+id/lendDetail4"
+            android:layout_marginTop="@dimen/Top4"
+            android:text="誰に(どこに)" />
+
+        <TextView
+            android:id="@+id/lendDetail6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_below="@+id/lendDetail5"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/lb_text3" />
+
+        <TextView
+            android:id="@+id/lendDetail7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:textColor="@color/grad2"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lendDetail6"
+            android:layout_marginTop="@dimen/Top4"
+            android:text="いつ" />
+
+        <TextView
+            android:id="@+id/lendDetail8"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lendDetail7"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/lb_text3" />
+
+        <TextView
+            android:id="@+id/lendDetail9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/lb_text3"
+            android:textColor="@color/grad2"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lendDetail8"
+            android:layout_marginTop="@dimen/Top4"
+            android:text="メモ" />
+
+        <TextView
+            android:id="@+id/lendDetail10"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/Start2"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lendDetail9"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/lb_text3" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/buttonlendDetail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:bootstrapSize="lg"
+            android:layout_below="@+id/lendDetail10"
+            android:layout_marginTop="30dp"
+            android:text="編集"
+            app:roundedCorners="true"
+            app:bootstrapBrand="info"/>
+
+    </RelativeLayout>
+</ScrollView>

@@ -21,13 +21,11 @@ public class AllbookAdapter extends BaseAdapter {
     public AllbookAdapter(Context context) {
         mContext =context;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
     }
 
     public void setTaskList(List<Book> taskList) {
         mAllList = taskList;
     }
-
 
     @Override
     public int getCount() {
